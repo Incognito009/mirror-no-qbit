@@ -119,8 +119,6 @@ def bot_help(update, context):
 
 /{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
 
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
-
 /{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
 
 /{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
@@ -135,23 +133,11 @@ def bot_help(update, context):
 
 /{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
 
-/{BotCommands.ConfigMenuCommand}: Get Info Menu about bot config (Owner Only)
-
-/{BotCommands.UpdateCommand}: Update Bot from Upstream Repo (Owner Only)
-
 /{BotCommands.UsageCommand}: To see Heroku Dyno Stats (Owner & Sudo only)
 
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
 
 /{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
-
-/{BotCommands.ShellCommand}: Run commands in Shell (Terminal)
-
-/{BotCommands.ExecHelpCommand}: Get help for Executor module
-
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
-
-<code>/{BotCommands.WeebCommand}</code>: for anime stuff
 '''
 
     help_string = f'''
@@ -179,15 +165,7 @@ def bot_help(update, context):
 
 /{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
 
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
-
-/{BotCommands.SpeedCommand}: Check Internet Speed of the Host
-
 /{BotCommands.MediaInfoCommand}: Get detailed info about replied media (Only for Telegram file)
-
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
-
-<code>/{BotCommands.WeebCommand}</code>: for anime stuff: for anime stuff
 '''
 
     if CustomFilters.sudo_user(update) or CustomFilters.owner_filter(update):
@@ -214,7 +192,6 @@ botcmds = [
         (f'{BotCommands.StatsCommand}','Bot Usage Stats'),
         (f'{BotCommands.RestartCommand}','Restart the bot [owner/sudo only]'),
         (f'{BotCommands.LogCommand}','Get the Bot Log [owner/sudo only]'),
-        (f'{BotCommands.TsHelpCommand}','Get help for Torrent search module'),
         (f'{BotCommands.UsageCommand}','Get Dyno left'),
     ]
 
@@ -244,8 +221,6 @@ def main():
     bot.set_my_commands(botcmds)
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
-    ping_handler = CommandHandler(BotCommands.PingCommand, ping,
-                                  filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
     restart_handler = CommandHandler(BotCommands.RestartCommand, restart,
                                      filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
     help_handler = CommandHandler(BotCommands.HelpCommand,
@@ -254,7 +229,6 @@ def main():
                                    stats, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
     log_handler = CommandHandler(BotCommands.LogCommand, log, filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
     dispatcher.add_handler(start_handler)
-    dispatcher.add_handler(ping_handler)
     dispatcher.add_handler(restart_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(stats_handler)
