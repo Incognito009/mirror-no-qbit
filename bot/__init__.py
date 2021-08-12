@@ -135,7 +135,6 @@ try:
     STATS_BOT = getConfig('STATS_BOT')
     HELP_BOT = getConfig('HELP_BOT')
     LOG_BOT = getConfig('LOG_BOT')
-    SPEEDTEST_BOT = getConfig('SPEEDTEST_BOT')
     CLONE_BOT = getConfig('CLONE_BOT')
     COUNT_BOT = getConfig('COUNT_BOT')
     YTDL_BOT = getConfig('YTDL_BOT')
@@ -147,7 +146,6 @@ try:
     SHELL_BOT = getConfig('SHELL_BOT')
     UPDATE_BOT = getConfig('UPDATE_BOT')
     EXEHELP_BOT = getConfig('EXEHELP_BOT')
-    TSHELP_BOT = getConfig('TSHELP_BOT')
     INDEX_BUTTON = getConfig('INDEX_BUTTON')
     TITLE_NAME = getConfig('TITLE_NAME')
     AUTHOR_NAME = getConfig('AUTHOR_NAME')
@@ -164,7 +162,6 @@ try:
     BOT_NAME = getConfig('BOT_NAME')
     ORDER_SORT = getConfig('ORDER_SORT')
     GD_BUTTON = getConfig('GD_BUTTON')
-    WEEB_BOT = getConfig('WEEB_BOT')
     RESTARTED_GROUP_ID = getConfig('RESTARTED_GROUP_ID')
     
 except KeyError as e:
